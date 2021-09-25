@@ -73,6 +73,23 @@ int* plusOne(int* digits, int digitsSize, int* returnSize){
     }
     return newDigits;
 }
+int* plusOne1(int * digits, int digitsSize, int * returnSize) {
+    for (int i = digitsSize - 1; i >= 0 ; i--) {
+        if (digits[i] == 9) {
+            digits[i] = 0;
+        } else {
+            digits[i] += 1;
+            *returnSize = digitsSize;
+            return digits;
+        }
+    }
+    *returnSize = digitsSize + 1;
+    int * result = (int*)malloc(sizeof(int) * (digitsSize + 1));
+    memset(result, 0, sizeof(int) * (digitsSize + 1));
+    result[0] =1;
+    return result;
+}
+
 //leetcode submit region end(Prohibit modification and deletion)
 
 
@@ -82,24 +99,20 @@ int main() {
     int resultSize1 = 0;
     int digits1[3] = {1,2,3};
     int digitsSize1 = 3;
-    int *param1 = plusOne(digits1, digitsSize1, &resultSize1);
+    int *param1 = plusOne1(digits1, digitsSize1, &resultSize1);
     printf("123:%d\t", resultSize1);
     for (int i = 0; i < resultSize1; ++i) {
         printf("[%d] ", param1[i]);
     }
-    free(param1);
-    param1 = NULL;
     printf("\n");
     int resultSize2 = 0;
     int digits2[3] = {9,9,9};
     int digitsSize2 = 3;
-    int *param2 = plusOne(digits2, digitsSize2, &resultSize2);
+    int *param2 = plusOne1(digits2, digitsSize2, &resultSize2);
     printf("999:%d\t", resultSize2);
     for (int i = 0; i < resultSize2; ++i) {
         printf("[%d] ", param2[i]);
     }
-    free(param2);
-    param2 = NULL;
 
     return 0;
 }

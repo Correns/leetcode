@@ -10,6 +10,6 @@
 #include <mm_malloc.h>
 #include <string.h>
 #include <assert.h>
-
+#include "stdbool.h"
 
 #endif //LEETCODE_LEETCODE_H

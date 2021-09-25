@@ -30,8 +30,7 @@ int minDistance(char * word1, char * word2){
     int len = sizeof(char) * 16;
     errno_t rc = memset_s(str, len, 0, len);
     assert(rc == 0);
-    rc = memcpy(str, "hello", strlen("hello"));
-    assert(rc == 0);
+    memcpy(str, "hello", strlen("hello"));
     printf("str:%s\n", str);
     free(str);
     return 0;
